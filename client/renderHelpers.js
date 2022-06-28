@@ -38,7 +38,7 @@ export const renderAllPlayers = (playerList) => {
     const button = detailButtons[i];
     const pup = playerList[i];
     button.addEventListener('click', async () => {
-      
+
       fetchSinglePlayer(pup.id)
     });
   }
