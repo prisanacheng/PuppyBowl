@@ -39,7 +39,7 @@ export const renderAllPlayers = (playerList) => {
     const pup = playerList[i];
     button.addEventListener('click', async () => {
       
-      fetchSinglePlayer(pup.Id)
+      fetchSinglePlayer(pup.id)
     });
   }
 };
