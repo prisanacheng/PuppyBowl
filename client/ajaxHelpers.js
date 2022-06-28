@@ -22,7 +22,7 @@ try  {
   const singlePlayer = await fetch(`${APIURL}/players/${playerId}`);
   const result = await singlePlayer.json();
   if(result.error) throw result.error;
-  return result.data.players
+  return result.data.player
 } 
 catch (err) {
   console.error('Uh oh, trouble fetching players!', err);

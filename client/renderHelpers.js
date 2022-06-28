@@ -38,8 +38,8 @@ export const renderAllPlayers = (playerList) => {
     const button = detailButtons[i];
     const pup = playerList[i];
     button.addEventListener('click', async () => {
-
-      fetchSinglePlayer(pup.id)
+      const player = await fetchSinglePlayer(pup.id)
+      renderSinglePlayer(player)
     });
   }
 };
@@ -62,7 +62,7 @@ export const renderSinglePlayer = (playerObj) => {
     playerObj.name
   } the puppy">
       <button id="see-all">Back to all players</button>
-    </div>
+      </div>
   `;
 
   playerContainer.innerHTML = pupHTML;
