@@ -36,9 +36,9 @@ export const renderAllPlayers = (playerList) => {
   let detailButtons = [...document.getElementsByClassName('detail-button')];
   for (let i = 0; i < detailButtons.length; i++) {
     const button = detailButtons[i];
-    const pup = playerList[i];
     button.addEventListener('click', async () => {
-      const player = await fetchSinglePlayer(pup.id)
+      const playerID = button.dataset.id;
+      const player = await fetchSinglePlayer(playerID)
       renderSinglePlayer(player)
     });
   }
@@ -62,10 +62,14 @@ export const renderSinglePlayer = (playerObj) => {
     playerObj.name
   } the puppy">
       <button id="see-all">Back to all players</button>
-      </div>
+    </div>
   `;
-
   playerContainer.innerHTML = pupHTML;
+  let seeAllButton = document.getElementById('see-all');
+    seeAllButton.addEventListener('click', async () => {
+      const players = await fetchAllPlayers()
+      renderAllPlayers(players)
+    });
 };
 
 export const renderNewPlayerForm = () => {
