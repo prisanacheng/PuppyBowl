@@ -18,11 +18,11 @@ export const fetchAllPlayers = async () => {
 
 export const fetchSinglePlayer = async (playerId) => {
 try  {
-  const singlePlayer = await fetch(`${APIURL}/players/PLAYER-ID}`);
+  const singlePlayer = await fetch(`${APIURL}/players${PLAYER-ID}`);
   const result = await singlePlayer.json();
   if(result.error) throw result.error;
-  return result.data.playerId
-}
+  return result.data.players.
+} 
 catch (err) {
   console.error('Uh oh, trouble fetching players!', err);
 }
