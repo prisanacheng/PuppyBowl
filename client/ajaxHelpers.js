@@ -29,8 +29,26 @@ catch (err) {
 }
 };
 
-export const addNewPlayer = async (playerObj) => {
-
+export const addNewPlayer = async (playerID) => {
+  try {
+    const response = await fetch(
+      'https://fsa-puppy-bowl.herokuapp.com/api/COHORT-NAME/players',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'Rufus',
+          breed: 'Irish Setter',
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export const removePlayer = async (playerId) => {
