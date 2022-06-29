@@ -106,6 +106,9 @@ export const renderNewPlayerForm = () => {
     }
   
     await addNewPlayer(animalData);
-
+    const players = await fetchAllPlayers()
+    renderAllPlayers(players)
+  
+    renderNewPlayerForm()
   });
 };
