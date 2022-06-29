@@ -29,28 +29,35 @@ catch (err) {
 }
 };
 
-export const addNewPlayer = async (playerID) => {
+export const addNewPlayer = async (playerObj) => {
   try {
-    const response = await fetch(
-      'https://fsa-puppy-bowl.herokuapp.com/api/COHORT-NAME/players',
-      {
+    const response = await fetch (`${APIURL}/players`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: 'Rufus',
-          breed: 'Irish Setter',
-        }),
-      }
-    );
+        body: JSON.stringify(playerObj)
+        });
     const result = await response.json();
-    console.log(result);
-  } catch (err) {
-    console.error(err);
-  }
-};
+    if (result.error) throw result.error;
+    return result.data.player;
+} catch (err) {
+  console.error("Trouble fetching addNewPlayer", err)
+}
+}
 
 export const removePlayer = async (playerId) => {
-
+try  {
+  const response = await fetch(`${APIURL}/players/${playerId}`, {
+    method: "DELETE",
+  });
+  const result = await response.json();
+  if(result.error) throw result.error;
+  return;
+} catch (err) {
+ console.error(
+   `Whoops, trouble removing player #${playerId} from the roster!`,
+   err
+ );
+}
 };
